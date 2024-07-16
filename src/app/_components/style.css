@@ -1,0 +1,4 @@
+.logo {
+  animation: blink 3s;
+  animation-iteration-count: infinite;
+}

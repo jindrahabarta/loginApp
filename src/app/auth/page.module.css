@@ -1,0 +1,28 @@
+.formBg {
+    background-image: linear-gradient(
+        to top left,
+        #c7d2fe 30%,
+        #8b5cf6 60%,
+        #f97316 90%
+    );
+    padding: 2px;
+}
+.inputBg {
+    background: linear-gradient(
+        to right,
+        #f97316 30%,
+        #8b5cf6 60%,
+        #c7d2fe 90%
+    );
+    padding-bottom: 0.15rem;
+}
+.inputBg:focus-within {
+}
+
+.input {
+    outline: none;
+    width: 100%;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    padding: 0.25rem;
+}
