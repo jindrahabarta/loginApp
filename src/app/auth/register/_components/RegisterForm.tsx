@@ -3,13 +3,13 @@ import React, { useState } from 'react'
 import { signIn, useSession } from 'next-auth/react'
 import styles from '@/app/auth/page.module.css'
 import GoogleButton from '@/app/_components/GoogleButton'
-import DiscordButton from '@/app/_components/DiscordButton'
 
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 import useDb from '@/app/_utils/useDb'
 import useFetchCollection from '@/app/_utils/useFetchCollection'
 import toast from 'react-hot-toast'
 import { redirect, useRouter } from 'next/navigation'
+import GitHubButton from '@/app/_components/GitHubButton'
 
 const { db } = useDb()
 
@@ -33,19 +33,19 @@ const RegisterForm = () => {
         }
     }
 
-    const registerGoogle = () => {
-        signIn('google')
-
-        if ((session.status = 'authenticated')) {
-            addDoc(collection(db, 'users'), {
-                createdAt: serverTimestamp(),
-                username: session.data?.user?.name,
-            })
-                .then(() => toast.success('Successfully registered'))
-                .then(() => router.push('/'))
-        } else {
-            toast.error('Registration fail')
-        }
+    const registerUser = (props: { provider: string }) => {
+        // signIn(props.provider)
+        console.log(props)
+        // if ((session.status = 'authenticated')) {
+        //     addDoc(collection(db, 'users'), {
+        //         createdAt: serverTimestamp(),
+        //         username: session.data?.user?.name,
+        //     })
+        //         .then(() => toast.success('Successfully registered'))
+        //         .then(() => router.push('/'))
+        // } else {
+        //     toast.error('Registration fail')
+        // }
     }
     return (
         <div className={styles.formBg}>
@@ -109,8 +109,8 @@ const RegisterForm = () => {
                     <h2>Or</h2>
                     <div className="border-b border-gray-400 w-full"></div>
                 </div>
-                <GoogleButton handleClick={registerGoogle}></GoogleButton>
-                <DiscordButton></DiscordButton>
+                <GoogleButton></GoogleButton>
+                <GitHubButton></GitHubButton>
             </div>
         </div>
     )

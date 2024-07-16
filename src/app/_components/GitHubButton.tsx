@@ -1,10 +1,10 @@
 'use client'
 import { signIn } from 'next-auth/react'
 
-const GoogleButton = () => {
+const GitHubButton = () => {
     return (
         <button
-            className="flex w-full justify-center items-center gap-5 rounded bg-white px-4 py-2 text-sm font-bold drop-shadow-md hover:bg-gray-50 duration-200"
+            className="flex w-full h-14 justify-center items-center gap-5 rounded bg-white text-sm font-bold drop-shadow-md hover:bg-gray-50 duration-200"
             onClick={() => signIn('github')}
         >
             <DiscordLogo />
@@ -13,7 +13,7 @@ const GoogleButton = () => {
     )
 }
 
-export default GoogleButton
+export default GitHubButton
 
 const DiscordLogo = (props: any) => (
     <svg

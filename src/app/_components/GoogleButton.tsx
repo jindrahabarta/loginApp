@@ -1,8 +1,10 @@
-const GoogleButton = ({ handleClick }: { handleClick: () => void }) => {
+import { signIn } from 'next-auth/react'
+
+const GoogleButton = () => {
     return (
         <button
-            className="flex w-full justify-center gap-5 rounded bg-white px-4 py-4 text-sm font-bold drop-shadow-md hover:bg-gray-50 duration-200"
-            onClick={handleClick}
+            className="flex w-full h-14 justify-center items-center gap-5 rounded bg-white text-sm font-bold drop-shadow-md hover:bg-gray-50 duration-200"
+            onClick={() => signIn('google')}
         >
             <GoogleLogo />
             <p>Sign in with Google</p>

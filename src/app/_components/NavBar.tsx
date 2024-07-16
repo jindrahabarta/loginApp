@@ -23,7 +23,11 @@ const NavBar = () => {
                         <div className="w-10 h-10 bg-slate-300 border-2 border-gray-400 rounded-full overflow-hidden">
                             {session.status === 'authenticated' && (
                                 <Image
-                                    src={session.data?.user?.image}
+                                    src={
+                                        session.data?.user?.image
+                                            ? session.data?.user?.image
+                                            : 'none'
+                                    }
                                     width={50}
                                     height={50}
                                     alt="user-image"

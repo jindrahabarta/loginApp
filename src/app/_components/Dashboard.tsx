@@ -4,15 +4,12 @@ import { signOut, useSession } from 'next-auth/react'
 import LogoutIco from '../Icons/LogoutIco'
 import Image from 'next/image'
 import toast from 'react-hot-toast'
-import { redirect } from 'next/navigation'
 
 const Dashboard = () => {
     const session = useSession()
 
-    const signOutt = () => {
-        signOut().then(() => {
-            redirect('/'), toast.success('Successfully logout')
-        })
+    const signOutUser = () => {
+        signOut(), toast.success('Successfully logout')
     }
 
     return (
@@ -27,7 +24,11 @@ const Dashboard = () => {
                         <div className="w-16 h-16 bg-slate-300 border-2 border-gray-400 rounded-full overflow-hidden">
                             {session.status === 'authenticated' && (
                                 <Image
-                                    src={session.data?.user?.image}
+                                    src={
+                                        session.data?.user?.image
+                                            ? session.data?.user?.image
+                                            : 'none'
+                                    }
                                     width={200}
                                     height={200}
                                     alt="user-image"
@@ -42,7 +43,7 @@ const Dashboard = () => {
                     </div>
 
                     <button
-                        onClick={signOutt}
+                        onClick={signOutUser}
                         className="flex gap-1 group/ico items-center self-end text-gray-500 hover:text-black duration-150"
                     >
                         <LogoutIco width="25px" color="#6b7280"></LogoutIco>
